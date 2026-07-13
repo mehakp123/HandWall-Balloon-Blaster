@@ -1,0 +1,67 @@
+CREATE THE SECOND APP IN A NEW GITHUB REPOSITORY
+
+A. CREATE THE REPOSITORY
+1. Open github.com and sign in.
+2. Tap + and choose New repository.
+3. Name: HandWall-Balloon-Blaster
+4. Choose Public or Private.
+5. Select Add a README file.
+6. Tap Create repository.
+
+B. OPEN A CODESPACE
+1. On the new repository page, tap the green Code button.
+2. Open Codespaces.
+3. Tap Create codespace on main.
+4. Wait for the VS Code browser page.
+
+C. UPLOAD THE ZIP
+1. In Explorer on the left, tap the three-dot menu.
+2. Choose Upload.
+3. Select HandWall_Balloon_Blaster_GitHub_Final.zip.
+4. Wait until the ZIP is visible beside README.md.
+
+D. EXTRACT INTO THE CURRENT REPOSITORY
+Open Terminal and paste this complete block:
+
+rm -rf /tmp/balloon_blaster_upload
+mkdir -p /tmp/balloon_blaster_upload
+unzip -q HandWall_Balloon_Blaster_GitHub_Final.zip -d /tmp/balloon_blaster_upload
+cp -a /tmp/balloon_blaster_upload/HandWall_Balloon_Blaster_Android/. .
+rm -rf /tmp/balloon_blaster_upload
+rm HandWall_Balloon_Blaster_GitHub_Final.zip
+
+echo "Checking files..."
+test -f app/build.gradle.kts && echo "Android project: OK"
+test -f .github/workflows/build-apk.yml && echo "GitHub workflow: OK"
+test -f app/src/main/res/raw/balloon_pop.wav && echo "Pop sound: OK"
+
+E. COMMIT AND PUSH
+Paste:
+
+git add .
+git commit -m "Add HandWall Balloon Blaster app"
+git push origin main
+
+F. BUILD THE APK
+1. Return to the GitHub repository tab and refresh.
+2. Open Actions.
+3. Open Build Android APK.
+4. A build should start automatically after the push.
+5. If it does not, tap Run workflow, select main, then Run workflow.
+6. Wait for the green tick.
+7. Open the completed run and scroll to Artifacts.
+8. Download HandWall-Balloon-Blaster-APK.
+9. Extract the downloaded artifact ZIP.
+10. Install app-debug.apk.
+
+G. FIRST USE
+1. Start Smart View / Screen Cast.
+2. Fix the phone near the projector lens, rear camera facing the wall.
+3. Open the app and allow Camera.
+4. Align the projected green hand and blue aim line with your real hand.
+5. Make a finger gun: index straight, thumb raised, other fingers curled.
+6. Aim at a balloon.
+7. Flick the index fingertip slightly upward and return it to fire.
+8. Use Recoil movement % to tune the trigger.
+9. Use Test Shot and Touch Test before camera testing.
+10. Long-press the screen or press Volume Down to reopen controls.
